@@ -60,18 +60,20 @@ export class HomeComponent implements OnInit {
     this.data.map((r) => {
       if (r.type === FormType.checkbox) {
         r.checkbox['checked' as string] = false;
+        r.checkbox['disabled' as string] = false;
       }
     });
   }
 
   getCheckBoxValue(item: FormOBJ) {
-    // item.value = '';
     const arr = [];
     item.checkbox.map((r) => {
       if (r.checked) {
         arr.push(r.val);
       }
     });
+    console.log(arr);
+
     return arr.join(',');
   }
 
@@ -80,6 +82,8 @@ export class HomeComponent implements OnInit {
   }
 
   func(item: FormOBJ) {
+    console.log(item);
+
     if (item.func) {
       item.func(item);
     }
@@ -87,7 +91,12 @@ export class HomeComponent implements OnInit {
 
   funcCheckbox(item: FormOBJ, e) {
     console.log(e);
-
+    // 寻找下标相同的
+    item.checkbox.map((r) => {
+      if (r.val === e.val) {
+        r.checked = e.checked;
+      }
+    });
     item.value = this.getCheckBoxValue(item);
     if (item.func) {
       item.func(item);

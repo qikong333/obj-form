@@ -1,0 +1,71 @@
+.ngform {
+  font-size: 12px;
+
+  ion-row,
+  ion-col {
+    padding: 0;
+  }
+}
+.range {
+  div {
+    padding: 0 10px;
+  }
+  .box1 {
+    display: block;
+    width: 33.33%;
+    float: left;
+  }
+  .box2 {
+    width: 66.66%;
+    float: left;
+    display: block;
+    ion-range {
+      padding: 0;
+      height: 20px;
+      --bar-height: 3px;
+      --knob-box-shadow: 1px 1px 2px #888888;
+    }
+  }
+}
+
+.xyz {
+  .x,
+  .y,
+  .z {
+    padding: 0 10px;
+    div {
+      position: relative;
+      span {
+        position: absolute;
+        top: 3px;
+        left: 2px;
+        font-size: 13px;
+        color: #b9b9b9;
+      }
+    }
+  }
+}
+
+.select {
+  padding: 0 10px;
+  select {
+    width: 100%;
+  }
+}
+input {
+  background: #e6e6e6;
+  text-align: center !important;
+  flex: 1 1 auto;
+  padding: 0 6px;
+  border: none;
+  width: 100%;
+  text-align: left;
+  color: inherit;
+  height: 22px;
+  &:focus {
+    outline: none;
+    background: none;
+    border: 1px solid #24d6ea;
+    box-shadow: 0 0 3px #4c8dff;
+  }
+}

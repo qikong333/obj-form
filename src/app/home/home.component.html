@@ -1,0 +1,54 @@
+<ng-container *ngFor="let item of data">
+  <div
+    *ngIf="!item?.hides"
+    [ngSwitch]="item?.type"
+    class="none {{item?.kind}} {{item?.key}}  ngform"
+  >
+    <div class="ngFormLeft" *ngIf="!item?.hides">
+      <span class="t0"
+        >{{item.name}}<span class="t1" *ngIf="item.name">：</span></span
+      >
+    </div>
+
+    <div *ngSwitchCase="FormType.input">
+      <input type="text" (blur)="func(item)" [(ngModel)]="item.value" />
+    </div>
+
+    <div *ngSwitchCase="FormType.select">
+      <select [(ngModel)]="item.value">
+        <option *ngFor="let option of item.option" [value]="option"
+          >{{option}}</option
+        >
+      </select>
+    </div>
+
+    <div *ngSwitchCase="FormType.color">
+      <input type="color" [(ngModel)]="item.value" />
+    </div>
+
+    <div *ngSwitchCase="FormType.radio">
+      <ng-container *ngFor="let radio of item.option">
+        <input
+          type="radio"
+          name="pay"
+          [(ngModel)]="item.value"
+          [value]="radio"
+          (change)="func(item)"
+        />{{radio}}
+      </ng-container>
+    </div>
+
+    <div *ngSwitchCase="FormType.checkbox">
+      {{item.value}}
+      <ng-container *ngFor="let checkbox of item.checkbox">
+        <input
+          type="checkbox"
+          [value]="checkbox.val"
+          (change)="funcCheckbox(item,{checked:checkboxItem.checked,val:checkbox.val})"
+          [checked]="checkboxItem.checked"
+          #checkboxItem
+        />{{checkbox.val}}
+      </ng-container>
+    </div>
+  </div>
+</ng-container>

@@ -1,10 +1,10 @@
 <ng-container *ngFor="let item of data">
   <div
-    *ngIf="!item?.hides"
+    *ngIf="!item?.visible"
     [ngSwitch]="item?.type"
-    class="none {{item?.kind}} {{item?.key}}  ngform"
+    class="none {{item?.kind}} {{item?.field}}  ngform"
   >
-    <div class="ngFormLeft" *ngIf="!item?.hides">
+    <div class="ngFormLeft" *ngIf="!item?.visible">
       <span class="t0"
         >{{item.name}}<span class="t1" *ngIf="item.name">：</span></span
       >
